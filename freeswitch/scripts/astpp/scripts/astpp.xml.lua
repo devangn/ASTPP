@@ -144,7 +144,7 @@ function freeswitch_xml_outbound(xml,destination_number,outbound_info,callerid_a
 	if (outbound_info['number_translation'] ~= '') then 
 		temp_destination_number = do_number_translation(outbound_info['dialed_modify'],destination_number)
 	end
-
+--PI DN Here number_translation as well as prepend and strip conditions are checking, we should change prepand/strip with number translation for less number of conditions	
 	if(outbound_info['prepend'] ~= '' or outbound_info['strip'] ~= '') then
 
         if (outbound_info['prepend'] == '') then 
