@@ -60,6 +60,9 @@ function freeswitch_xml_header(xml,destination_number,accountcode,maxlength,call
 		table.insert(xml, [[<action application="set" data="fax_enable_t38_request=true"/>]]);    
 	end
 
+--PI DN We should not have condition for every system config(like balance_announce, minute_announce, is_recording, xml_did_rates, cid_name, cid_number etc.)
+--If any non default config is checked by admin then add that particular chunk in dialplan and when uncheck remove that part and make the dialplan with default conditions only
+
 	if(tonumber(config['balance_announce']) == 0) then
 		table.insert(xml, [[<action application="sleep" data="1000"/>]]);
 		table.insert(xml, [[<action application="playback" data="/usr/local/freeswitch/sounds/en/us/callie/astpp-this-card-has-a-balance-of.wav"/>]]);
